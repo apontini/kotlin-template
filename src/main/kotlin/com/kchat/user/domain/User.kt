@@ -1,4 +1,4 @@
-package com.kchat.user
+package com.kchat.user.domain
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

@@ -1,16 +1,17 @@
 package com.kchat.user
 
+import com.kchat.user.controller.GetUser
+import com.kchat.user.infrastructure.UserRepository
 import io.ktor.application.*
 import io.ktor.response.*
 import io.ktor.routing.*
 import org.koin.ktor.ext.inject
 
 fun Route.userRoutes() {
-    route("/users/{id}") {
-        val userRepository by inject<UserRepository>()
-
-        get {
-            call.respondText(userRepository.findById(call.parameters["id"] ?: "null")?.email ?: "no")
+    route("/v1") {
+        route("/users/{id}") {
+            val getUserController by inject<GetUser>()
+            get { getUserController(this) }
         }
     }
 }

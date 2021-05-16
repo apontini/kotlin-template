@@ -1,5 +1,7 @@
-package com.kchat.user
+package com.kchat.user.application
 
+import com.kchat.user.domain.User
+import com.kchat.user.infrastructure.UserRepository
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 

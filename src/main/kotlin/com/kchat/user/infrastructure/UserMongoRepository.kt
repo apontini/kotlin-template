@@ -1,5 +1,6 @@
-package com.kchat.user
+package com.kchat.user.infrastructure
 
+import com.kchat.user.domain.User
 import com.mongodb.client.MongoClient
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject

@@ -1,4 +1,6 @@
-package com.kchat.user
+package com.kchat.user.infrastructure
+
+import com.kchat.user.domain.User
 
 interface UserRepository {
     fun save(user: User): User
