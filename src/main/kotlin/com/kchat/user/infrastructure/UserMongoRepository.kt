@@ -2,10 +2,12 @@ package com.kchat.user.infrastructure
 
 import com.kchat.user.domain.User
 import com.mongodb.client.MongoClient
+import com.mongodb.client.model.ReplaceOptions
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.litote.kmongo.eq
 import org.litote.kmongo.findOne
+import org.litote.kmongo.replaceOneById
 
 class UserMongoRepository : UserRepository, KoinComponent {
     private val client by inject<MongoClient>()
@@ -13,7 +15,7 @@ class UserMongoRepository : UserRepository, KoinComponent {
     override fun save(user: User): User {
         client.getDatabase("kchat")
             .getCollection("user", User::class.java)
-            .insertOne(user)
+            .replaceOneById(user.id, user, ReplaceOptions().upsert(true))
         return user
     }
 
@@ -33,13 +35,6 @@ class UserMongoRepository : UserRepository, KoinComponent {
         return client.getDatabase("kchat")
             .getCollection("user", User::class.java)
             .findOne(User::id eq id)
-    }
-
-    override fun update(newUser: User): User {
-        client.getDatabase("kchat")
-            .getCollection("user", User::class.java)
-            .replaceOne(User::id eq newUser.id, newUser)
-        return newUser
     }
 
 }

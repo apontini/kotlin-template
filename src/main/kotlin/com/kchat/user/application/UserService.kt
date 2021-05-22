@@ -22,7 +22,7 @@ class UserService : KoinComponent {
         val user = userRepository.findById(id)
         requireNotNull(user) { "User not found" }
 
-        return userRepository.update(user.update())
+        return userRepository.save(user.update())
     }
 
     fun deleteUser(id: String) {
