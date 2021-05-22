@@ -4,7 +4,9 @@ import com.kchat.user.userModule
 import com.kchat.user.userRoutes
 import io.ktor.application.*
 import io.ktor.features.*
+import io.ktor.serialization.*
 import io.ktor.server.netty.*
+import kotlinx.serialization.json.Json
 import org.koin.ktor.ext.Koin
 
 fun main(args: Array<String>) = EngineMain.main(args)
@@ -15,6 +17,9 @@ fun Application.module(testing: Boolean = false) {
         modules(userModule)
     }
     install(CallLogging)
+    install(ContentNegotiation) {
+        json(Json { prettyPrint = true })
+    }
 
     userRoutes()
 }

@@ -4,10 +4,10 @@ import io.ktor.application.*
 import io.ktor.util.pipeline.*
 
 abstract class Controller {
-    operator fun invoke(context: PipelineContext<Unit, ApplicationCall>) {
+    suspend operator fun invoke(context: PipelineContext<Unit, ApplicationCall>) {
         //should do common stuff with context
-        call(context)
+        context.call()
     }
 
-    abstract fun call(context: PipelineContext<Unit, ApplicationCall>);
+    abstract suspend fun PipelineContext<Unit, ApplicationCall>.call();
 }
