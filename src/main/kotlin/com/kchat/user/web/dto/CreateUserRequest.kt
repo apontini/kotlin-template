@@ -1,4 +1,4 @@
-package com.kchat.user.web
+package com.kchat.user.web.dto
 
 import kotlinx.serialization.Serializable
 

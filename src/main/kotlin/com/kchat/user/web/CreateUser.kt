@@ -1,7 +1,8 @@
 package com.kchat.user.web
 
 import com.kchat.user.application.UserService
-import com.kchat.user.domain.User
+import com.kchat.user.exceptions.UserAlreadyExistsException
+import com.kchat.user.web.dto.CreateUserRequest
 import com.kchat.webapp.Controller
 import io.ktor.application.*
 import io.ktor.http.*
@@ -16,10 +17,14 @@ class CreateUser : Controller(), KoinComponent {
 
     override suspend fun PipelineContext<Unit, ApplicationCall>.call() {
         val request = call.receive<CreateUserRequest>()
-        call.respond(
-            HttpStatusCode.Companion.Created,
-            userService.createUser(request.email, request.name)
-        )
+        try {
+            call.respond(
+                HttpStatusCode.Companion.Created,
+                userService.createUser(request.email, request.name)
+            )
+        } catch (e: UserAlreadyExistsException) {
+            call.respondText(status = HttpStatusCode.Conflict) { "User already exists" }
+        }
     }
 
 }

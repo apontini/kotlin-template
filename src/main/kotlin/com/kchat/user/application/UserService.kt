@@ -1,6 +1,7 @@
 package com.kchat.user.application
 
 import com.kchat.user.domain.User
+import com.kchat.user.exceptions.UserAlreadyExistsException
 import com.kchat.user.infrastructure.UserRepository
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -9,7 +10,7 @@ class UserService : KoinComponent {
     private val userRepository by inject<UserRepository>()
 
     fun createUser(email: String, name: String): User {
-        require(userRepository.findByEmail(email) == null) { "Email already exists" }
+        userRepository.findByEmail(email) ?: throw UserAlreadyExistsException()
 
         return userRepository.save(
             User(email = email, name = name)
