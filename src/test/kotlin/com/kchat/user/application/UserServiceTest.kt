@@ -2,10 +2,9 @@ package com.kchat.user.application
 
 import UnitTest
 import com.kchat.user.domain.User
+import com.kchat.user.exceptions.UserAlreadyExistsException
 import com.kchat.user.infrastructure.UserRepository
-import io.kotest.core.spec.Spec
-import io.kotest.core.test.TestCase
-import io.kotest.core.test.TestResult
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
 import io.mockk.*
 import org.koin.core.module.Module
@@ -48,7 +47,7 @@ internal class UserServiceTest : UnitTest() {
                 }
 
                 it("should throw an exception") {
-
+                    shouldThrow<UserAlreadyExistsException> { userService.createUser("email@test.it", "pass") }
                 }
             }
         }

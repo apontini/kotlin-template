@@ -10,7 +10,7 @@ class UserService : KoinComponent {
     private val userRepository by inject<UserRepository>()
 
     fun createUser(email: String, name: String): User {
-        userRepository.findByEmail(email) ?: throw UserAlreadyExistsException()
+        userRepository.findByEmail(email)?.let { throw UserAlreadyExistsException() }
 
         return userRepository.save(
             User(email = email, name = name)
