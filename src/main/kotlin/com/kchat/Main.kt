@@ -4,6 +4,9 @@ import com.kchat.user.userModule
 import com.kchat.user.userRoutes
 import io.ktor.application.*
 import io.ktor.features.*
+import io.ktor.http.*
+import io.ktor.response.*
+import io.ktor.routing.*
 import io.ktor.serialization.*
 import io.ktor.server.netty.*
 import kotlinx.serialization.json.Json
@@ -22,4 +25,10 @@ fun Application.module(testing: Boolean = false) {
     }
 
     userRoutes()
+    routing {
+        get("/") {
+            call.respondText { "I'm working! \uD83D\uDC0B" }
+        }
+
+    }
 }

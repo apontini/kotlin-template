@@ -3,6 +3,7 @@ package com.kchat.user
 import com.kchat.user.web.CreateUser
 import com.kchat.user.web.GetUser
 import io.ktor.application.*
+import io.ktor.response.*
 import io.ktor.routing.*
 import org.koin.ktor.ext.inject
 
