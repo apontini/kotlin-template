@@ -27,8 +27,7 @@ fun Application.module(testing: Boolean = false) {
     userRoutes()
     routing {
         get("/") {
-            call.respondText { "I'm working! \uD83D\uDC0B" }
+            call.respondText { "I'm working! \uD83D\uDC0B " }
         }
-
     }
 }

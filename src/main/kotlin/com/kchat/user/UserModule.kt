@@ -9,7 +9,9 @@ import org.koin.dsl.module
 import org.litote.kmongo.KMongo
 
 val userModule = module {
-    single { KMongo.createClient("mongodb://mongoadmin:password@mongodb:27017") }
+    single {
+        KMongo.createClient("mongodb://" + System.getenv("DB_USERNAME") + ":" + System.getenv("DB_PASSWORD") + "@mongodb:27017")
+    }
     single { UserMongoRepository() as UserRepository }
     single { UserService() }
 
