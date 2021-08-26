@@ -27,7 +27,9 @@ fun Application.module(testing: Boolean = false) {
     userRoutes()
     routing {
         get("/") {
-            call.respondText { "I'm working! \uD83D\uDC0B " }
+            call.respondBytes(contentType = ContentType.Text.Html) {
+                "<h1>I'm working! \uD83D\uDC0B</h1>".toByteArray(Charsets.UTF_16)
+            }
         }
     }
 }
