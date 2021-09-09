@@ -1,10 +1,10 @@
-package com.kchat.user
+package me.apontini.ktemplate.user
 
-import com.kchat.user.application.UserService
-import com.kchat.user.web.CreateUser
-import com.kchat.user.web.GetUser
-import com.kchat.user.infrastructure.UserMongoRepository
-import com.kchat.user.infrastructure.UserRepository
+import me.apontini.ktemplate.user.application.UserService
+import me.apontini.ktemplate.user.web.CreateUser
+import me.apontini.ktemplate.user.web.GetUser
+import me.apontini.ktemplate.user.infrastructure.UserMongoRepository
+import me.apontini.ktemplate.user.infrastructure.UserRepository
 import org.koin.dsl.module
 import org.litote.kmongo.KMongo
 

@@ -1,7 +1,7 @@
-package com.kchat
+package me.apontini.ktemplate
 
-import com.kchat.user.userModule
-import com.kchat.user.userRoutes
+import me.apontini.ktemplate.user.userModule
+import me.apontini.ktemplate.user.userRoutes
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.http.*

@@ -1,4 +1,4 @@
-package com.kchat.user.web.dto
+package me.apontini.ktemplate.user.web.dto
 
 import kotlinx.serialization.Serializable
 

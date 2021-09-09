@@ -1,8 +1,8 @@
-package com.kchat.user.application
+package me.apontini.ktemplate.user.application
 
-import com.kchat.user.domain.User
-import com.kchat.user.exceptions.UserAlreadyExistsException
-import com.kchat.user.infrastructure.UserRepository
+import me.apontini.ktemplate.user.domain.User
+import me.apontini.ktemplate.user.exceptions.UserAlreadyExistsException
+import me.apontini.ktemplate.user.infrastructure.UserRepository
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 

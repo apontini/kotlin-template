@@ -1,9 +1,9 @@
-package com.kchat.user.application
+package me.apontini.ktemplate.user.application
 
 import UnitTest
-import com.kchat.user.domain.User
-import com.kchat.user.exceptions.UserAlreadyExistsException
-import com.kchat.user.infrastructure.UserRepository
+import me.apontini.ktemplate.user.domain.User
+import me.apontini.ktemplate.user.exceptions.UserAlreadyExistsException
+import me.apontini.ktemplate.user.infrastructure.UserRepository
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
 import io.mockk.*

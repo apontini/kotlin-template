@@ -1,9 +1,8 @@
-package com.kchat.user
+package me.apontini.ktemplate.user
 
-import com.kchat.user.web.CreateUser
-import com.kchat.user.web.GetUser
+import me.apontini.ktemplate.user.web.CreateUser
+import me.apontini.ktemplate.user.web.GetUser
 import io.ktor.application.*
-import io.ktor.response.*
 import io.ktor.routing.*
 import org.koin.ktor.ext.inject
 

@@ -1,4 +1,4 @@
-package com.kchat.webapp
+package me.apontini.ktemplate.webapp
 
 import io.ktor.application.*
 import io.ktor.util.pipeline.*

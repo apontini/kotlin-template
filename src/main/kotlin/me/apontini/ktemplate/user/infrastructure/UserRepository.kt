@@ -1,6 +1,6 @@
-package com.kchat.user.infrastructure
+package me.apontini.ktemplate.user.infrastructure
 
-import com.kchat.user.domain.User
+import me.apontini.ktemplate.user.domain.User
 
 interface UserRepository {
     fun save(user: User): User

@@ -1,7 +1,7 @@
-package com.kchat.user.web
+package me.apontini.ktemplate.user.web
 
-import com.kchat.user.application.UserService
-import com.kchat.webapp.Controller
+import me.apontini.ktemplate.user.application.UserService
+import me.apontini.ktemplate.webapp.Controller
 import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.response.*

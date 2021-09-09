@@ -1,6 +1,6 @@
-package com.kchat.user.infrastructure
+package me.apontini.ktemplate.user.infrastructure
 
-import com.kchat.user.domain.User
+import me.apontini.ktemplate.user.domain.User
 import com.mongodb.client.MongoClient
 import com.mongodb.client.model.ReplaceOptions
 import org.koin.core.component.KoinComponent
