@@ -5,6 +5,7 @@ import me.apontini.ktemplate.user.web.CreateUser
 import me.apontini.ktemplate.user.web.GetUser
 import me.apontini.ktemplate.user.infrastructure.UserMongoRepository
 import me.apontini.ktemplate.user.infrastructure.UserRepository
+import me.apontini.ktemplate.user.web.DeleteUser
 import org.koin.dsl.module
 import org.litote.kmongo.KMongo
 
@@ -17,4 +18,5 @@ val userModule = module {
 
     single { GetUser() }
     single { CreateUser() }
+    single { DeleteUser() }
 }

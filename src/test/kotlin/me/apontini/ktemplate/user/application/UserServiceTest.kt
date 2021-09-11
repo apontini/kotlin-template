@@ -7,6 +7,7 @@ import me.apontini.ktemplate.user.infrastructure.UserRepository
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
 import io.mockk.*
+import me.apontini.ktemplate.user.exceptions.UserNotFoundException
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import org.koin.test.inject
@@ -19,7 +20,7 @@ internal class UserServiceTest : UnitTest() {
 
     init {
         val repository: UserRepository by inject()
-        val userService: UserService = UserService()
+        val userService = UserService()
 
         describe("User creation") {
             context("Correct execution") {
@@ -42,12 +43,30 @@ internal class UserServiceTest : UnitTest() {
             context("The email already exists") {
                 every { repository.findByEmail("email@test.it") } returns User("userId", "email@test.it", "user name")
 
-                it("should not save the user") {
+                it("should throw an exception and not save the user") {
+                    shouldThrow<UserAlreadyExistsException> { userService.createUser("email@test.it", "pass") }
                     verify { repository.save(any()) wasNot Called }
                 }
+            }
+        }
 
-                it("should throw an exception") {
-                    shouldThrow<UserAlreadyExistsException> { userService.createUser("email@test.it", "pass") }
+        describe("User deletion") {
+            context("Correct execution") {
+                every { repository.findById("userId") } returns User("userId", "email@test.it", "user name")
+                justRun { repository.delete(any()) }
+                userService.deleteUser("userId")
+
+                it("should correctly delete the specified user") {
+                    verify { repository.delete(User("userId", "email@test.it", "user name")) }
+                }
+            }
+
+            context("The user doesn't exist") {
+                every { repository.findById("userId") } returns null
+
+                it("should throw an exception and should not delete any user") {
+                    shouldThrow<UserNotFoundException> { userService.deleteUser("userId") }
+                    verify(exactly = 0) { repository.delete(any()) }
                 }
             }
         }

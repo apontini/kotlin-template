@@ -4,13 +4,16 @@ import me.apontini.ktemplate.user.web.CreateUser
 import me.apontini.ktemplate.user.web.GetUser
 import io.ktor.application.*
 import io.ktor.routing.*
+import me.apontini.ktemplate.user.web.DeleteUser
 import org.koin.ktor.ext.inject
 
 fun Route.userRoutes() {
     route("/v1") {
         route("/users/{id}") {
             val getUserController by inject<GetUser>()
+            val deleteUserController by inject<DeleteUser>()
             get { getUserController(this) }
+            delete { deleteUserController(this) }
         }
         route("/users") {
             val createUserController by inject<CreateUser>()

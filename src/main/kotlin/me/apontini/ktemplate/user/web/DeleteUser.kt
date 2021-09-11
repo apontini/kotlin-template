@@ -5,17 +5,18 @@ import io.ktor.http.*
 import io.ktor.response.*
 import io.ktor.util.pipeline.*
 import me.apontini.ktemplate.user.application.UserService
+import me.apontini.ktemplate.user.exceptions.UserNotFoundException
 import me.apontini.ktemplate.webapp.Controller
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class GetUser : Controller(), KoinComponent {
+class DeleteUser: Controller(), KoinComponent {
     private val userService by inject<UserService>();
 
     override suspend fun PipelineContext<Unit, ApplicationCall>.call() {
-        call.respond(
-            call.parameters["id"]?.let { userService.getUserById(it) } ?: HttpStatusCode.NotFound
-        )
+        try {
+            call.parameters["id"]?.let { userService.deleteUser(it) }
+        } catch (ignored: UserNotFoundException) { }
+        call.respond(HttpStatusCode.NoContent)
     }
-
 }
