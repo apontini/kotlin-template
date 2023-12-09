@@ -2,8 +2,8 @@ package me.apontini.ktemplate.user
 
 import me.apontini.ktemplate.user.web.CreateUser
 import me.apontini.ktemplate.user.web.GetUser
-import io.ktor.application.*
-import io.ktor.routing.*
+import io.ktor.server.application.*
+import io.ktor.server.routing.*
 import me.apontini.ktemplate.user.web.DeleteUser
 import org.koin.ktor.ext.inject
 

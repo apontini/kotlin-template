@@ -1,4 +1,6 @@
-FROM openjdk:11-jdk
+FROM openjdk:17-jdk-slim
+
+RUN apt-get update && apt-get install findutils -y
 
 EXPOSE 8080:8080
 

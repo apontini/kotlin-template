@@ -1,6 +1,6 @@
 package me.apontini.ktemplate.webapp
 
-import io.ktor.application.*
+import io.ktor.server.application.*
 import io.ktor.util.pipeline.*
 
 abstract class Controller {
