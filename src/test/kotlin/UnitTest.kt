@@ -14,17 +14,17 @@ abstract class UnitTest : KoinTest, DescribeSpec() {
 
     override fun isolationMode(): IsolationMode = IsolationMode.InstancePerLeaf
 
-    override fun beforeSpec(spec: Spec) {
+    override suspend fun beforeSpec(spec: Spec) {
         startKoin {
             modules(koinModule())
         }
     }
 
-    override fun afterSpec(spec: Spec) {
+    override suspend fun afterSpec(spec: Spec) {
         stopKoin()
     }
 
-    override fun beforeAny(testCase: TestCase) {
+    override suspend fun beforeAny(testCase: TestCase) {
         print("  ".repeat(findDepth(testCase)))
         println(testCase.displayName)
     }
